@@ -53,5 +53,5 @@ The system is created with expansion in mind, possible enhancements:
 - Implement the Admin role to manage all groups and add new ones. 
 - Currently the system supports a single group to get the system shipped faster to the NGO, but with the help of the admin role and new screens this behavior can be implemented. 
 
-Bless system was created as part of [TiTrias's 2023 NGO initiative](https://www.google.com)
-For system description and how to  [Bless: Open-source Map-powered Simple Homeless Management Information System (HMIS)]()
+Bless system was created as part of [TiTrias's 2023 NGO initiative](https://titrias.com/free-ngo-websites-in-2023/)
+For system description and how to  [Bless: Open-source Map-powered Simple Homeless Management Information System (HMIS)](https://titrias.com/bless-open-source-map-powered-simple-homeless-management-information-system-hmis/)
