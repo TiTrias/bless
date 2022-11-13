@@ -2,6 +2,10 @@
 
 Bless System allows you to automate and manage food distribution to homeless people, by creating groups consisting of admins (One or more) and food servers (Those who prepare food and deliver it to homeless). On the system, you can store locations on map to indicate the number of people in each area so that the route to cover them and the number of needed meals can be easily calculated.
 
+Bless system was created as part of [TiTrias's 2023 NGO initiative](https://titrias.com/free-ngo-websites-in-2023/)
+For system description and how to  [Bless: Open-source Map-powered Simple Homeless Management Information System (HMIS)](https://titrias.com/bless-open-source-map-powered-simple-homeless-management-information-system-hmis/)
+
+
 # How to get it up and running locally?
 Easiest way to do so is using docker directly, attached to this project a sample docker compose file that connects nginx, php and MariaDB.
 
@@ -53,5 +57,3 @@ The system is created with expansion in mind, possible enhancements:
 - Implement the Admin role to manage all groups and add new ones. 
 - Currently the system supports a single group to get the system shipped faster to the NGO, but with the help of the admin role and new screens this behavior can be implemented. 
 
-Bless system was created as part of [TiTrias's 2023 NGO initiative](https://titrias.com/free-ngo-websites-in-2023/)
-For system description and how to  [Bless: Open-source Map-powered Simple Homeless Management Information System (HMIS)](https://titrias.com/bless-open-source-map-powered-simple-homeless-management-information-system-hmis/)
