@@ -1,0 +1,71 @@
+version: '3'
+services:
+  bless-php:
+    container_name: bless-php
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    restart: unless-stopped
+    user: "${USERID}:${GROUPID}"
+    tty: true
+    hostname: api.bless.test
+    domainname: api.bless.test
+    environment:
+      SERVICE_NAME: server
+      SERVICE_TAGS: dev
+    working_dir: /bless/
+    networks:
+      - app-network
+    ports:
+      # For artisan serve
+      - "8000:8000"
+    dns:
+      - 8.8.8.8
+
+    volumes:
+      - .:/bless:rw
+      - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+
+  #Nginx Service
+  bless-nginx:
+    container_name: bless-nginx
+    image: nginx:alpine
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "9001:80"
+    networks:
+      - app-network
+    depends_on:
+      - bless-php
+    volumes:
+      - .:/bless:rw
+      - ./ssl:/ssl:rw
+      - ./docker/nginx/:/etc/nginx/conf.d/
+      - ./docker/dist/logs/nginx/:/var/log/nginx/:rw
+
+  #MySQL Service
+  bless-mysql:
+    image: mariadb
+    container_name: db
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: bless
+      MYSQL_ROOT_PASSWORD: database
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    networks:
+      - app-network
+    volumes:
+      - ./docker/dist/dbdata/:/var/lib/mysql/
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
+volumes:
+  dbdata:
+    driver: local
